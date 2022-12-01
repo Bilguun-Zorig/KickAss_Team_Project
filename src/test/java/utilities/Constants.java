@@ -7,4 +7,5 @@ public class Constants {
 	
 	public static final String Configuration_SetUp = "src/test/resources/propertiesFiles/configSetUp.properties";
 	public static final String Configuration_AppText = "src/test/resources/propertiesFiles/configAppText.properties";
+	public static final String Configuration_Login = "src/test/resources/propertiesFiles/configLogin.properties";
 }

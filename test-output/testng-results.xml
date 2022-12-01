@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[Method name is addNewEmployee]]>
+    </line>
+    <line>
+      <![CDATA[Status of execution is 1]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2022-12-01T14:12:28 EST" name="Default suite" finished-at="2022-12-01T14:12:37 EST" duration-ms="9059">
+    <groups>
+    </groups>
+    <test started-at="2022-12-01T14:12:28 EST" name="Default test" finished-at="2022-12-01T14:12:37 EST" duration-ms="9059">
+      <class name="projectTest.PIM_Page_Test_By_Bill">
+        <test-method is-config="true" signature="getDriver()[pri:0, instance:projectTest.PIM_Page_Test_By_Bill@201a4587]" started-at="2022-12-01T14:12:28 EST" name="getDriver" finished-at="2022-12-01T14:12:34 EST" duration-ms="5789" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getDriver -->
+        <test-method is-config="true" signature="loginFunctionality()[pri:0, instance:projectTest.PIM_Page_Test_By_Bill@201a4587]" started-at="2022-12-01T14:12:34 EST" name="loginFunctionality" finished-at="2022-12-01T14:12:36 EST" duration-ms="1331" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginFunctionality -->
+        <test-method signature="addNewEmployee()[pri:0, instance:projectTest.PIM_Page_Test_By_Bill@201a4587]" started-at="2022-12-01T14:12:36 EST" name="addNewEmployee" finished-at="2022-12-01T14:12:36 EST" duration-ms="7" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Method name is addNewEmployee]]>
+            </line>
+            <line>
+              <![CDATA[Status of execution is 1]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- addNewEmployee -->
+        <test-method is-config="true" signature="logoutFunctionality()[pri:0, instance:projectTest.PIM_Page_Test_By_Bill@201a4587]" started-at="2022-12-01T14:12:36 EST" name="logoutFunctionality" finished-at="2022-12-01T14:12:37 EST" duration-ms="1884" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logoutFunctionality -->
+      </class> <!-- projectTest.PIM_Page_Test_By_Bill -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

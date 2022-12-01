@@ -21,6 +21,7 @@ public class BaseClass {
 	private static WebDriver driver;
 	private static Properties configSetUp;
 	private static Properties configAppText;
+	private static Properties configLogin;
 	
 	@BeforeClass
 	public static WebDriver getDriver() {
@@ -80,6 +81,12 @@ public class BaseClass {
 			configAppText.load(appTextInput);
 			appTextInput.close();
 			
+			String loginPath = Constants.Configuration_Login;
+			FileInputStream loginInput = new FileInputStream(loginPath);
+			configLogin = new Properties();
+			configLogin.load(loginInput);
+			loginInput.close();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -89,6 +96,9 @@ public class BaseClass {
 		return configSetUp.getProperty(keyName);
 	}
 	public static String getAppText(String keyName) {
-		return configSetUp.getProperty(keyName);
+		return configAppText.getProperty(keyName);
+	}
+	public static String getLogin(String keyName) {
+		return configLogin.getProperty(keyName);
 	}
 }
