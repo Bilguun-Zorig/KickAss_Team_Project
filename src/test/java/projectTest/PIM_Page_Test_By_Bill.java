@@ -15,11 +15,16 @@ public class PIM_Page_Test_By_Bill extends CommonMethods {
 	public void loginFunctionality() {
 		sendLoginValues(hpo.usernameTextbox, "username", hpo.passwordTextbox, "password");
 		click(hpo.loginButton);
+		selection(cpo.leftSideMenuBar, "pim");
 	}
 	@Test
 	public void addNewEmployee() {
-		
 	}
+	@Test
+	public void test2() {}
+	@Test
+	public void test3() {}
+	
 	
 	@AfterMethod
 	public void logoutFunctionality() {
