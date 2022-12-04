@@ -59,7 +59,7 @@ public class BaseClass {
 		return driver;
 	}
 	
-	@AfterClass (enabled = false)
+	@AfterClass (enabled = true)
 	public static void tearDown() {
 		if(driver != null) {
 			driver.quit();

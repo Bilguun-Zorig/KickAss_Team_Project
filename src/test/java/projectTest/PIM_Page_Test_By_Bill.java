@@ -19,6 +19,7 @@ public class PIM_Page_Test_By_Bill extends CommonMethods {
 	}
 	@Test 
 	public void addNewEmployee() {
+
 		selection(ppo.getTopBarMenu(), "ae");
 		asserts(ppo.getAddEmployeeTitle(), "ae");
 		ppo.sendFirstLastName();
@@ -33,8 +34,7 @@ public class PIM_Page_Test_By_Bill extends CommonMethods {
 	public void searchForEmployee() {}
 	@Test
 	public void createANewReportTable() {}
-	
-	
+
 	@AfterMethod (enabled = false)
 	public void logoutFunctionality() {
 		click(cpo.userDropdownMenu);
