@@ -5,13 +5,17 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import com.github.javafaker.Faker;
+
 public class CommonMethods extends Assertions{
+	
+	public static Faker fake = new Faker();
 	
 	// This method will select a single webelement from a list of webelements 
 	//Remember the given String must match with webelement
 	public void selection (List<WebElement> elements, String select) {
 		for(WebElement element : elements) {
-			if(element.getText().equalsIgnoreCase(getAppText(select))) {
+			if(element.getText().trim().equalsIgnoreCase(getAppText(select).trim())) {
 				element.click();
 				break;
 			}
@@ -26,6 +30,10 @@ public class CommonMethods extends Assertions{
 		return wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
+	public static WebElement waitElementDisplayed(WebElement element) {
+		return wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	
 	// This method will send data from configLogin.properties to the webElement
 	public void sendTextByConfig(WebElement element, String keyName) {
 		element.sendKeys(BaseClass.getLogin(keyName));
@@ -36,4 +44,5 @@ public class CommonMethods extends Assertions{
 		sendTextByConfig(username, user);
 		sendTextByConfig(password, pass);
 	}
+	
 }
