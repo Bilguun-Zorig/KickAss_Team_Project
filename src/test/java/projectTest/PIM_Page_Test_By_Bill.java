@@ -15,9 +15,11 @@ public class PIM_Page_Test_By_Bill extends CommonMethods {
 	public void loginFunctionality() {
 		sendLoginValues(hpo.usernameTextbox, "username", hpo.passwordTextbox, "password");
 		click(hpo.loginButton);
+		asserts(ppo.getPimPageText(), "db");
 		selection(cpo.leftSideMenuBar, "pim");
+		asserts(ppo.getPimPageText(), "pim");
 	}
-	@Test 
+	@Test (enabled = false)
 	public void addNewEmployee() {
 		selection(ppo.getTopBarMenu(), "ae");
 		asserts(ppo.getAddEmployeeTitle(), "ae");
@@ -30,7 +32,10 @@ public class PIM_Page_Test_By_Bill extends CommonMethods {
 		asserts(ppo.getEmployeeList(), ppo.value);
 	}
 	@Test
-	public void searchForEmployee() {}
+	public void searchForEmployee() {
+		asserts(ppo.getEmployeeInfoText());
+		
+	}
 	@Test
 	public void createANewReportTable() {}
 	
