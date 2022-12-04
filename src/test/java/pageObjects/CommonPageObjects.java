@@ -18,4 +18,7 @@ public class CommonPageObjects {
 	
 	@FindBy (xpath = "//*[@class='oxd-dropdown-menu']/li/a")
 	public List<WebElement> userDropdownMenuItems;
+	
+	@FindBy (xpath = "//*[@class='oxd-main-menu-item-wrapper']")
+	public List<WebElement> leftSideMenuBar;
 }

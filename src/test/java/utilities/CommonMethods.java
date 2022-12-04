@@ -1,15 +1,20 @@
 package utilities;
 
 import java.util.List;
+import java.util.Locale;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.github.javafaker.Faker;
+import com.github.javafaker.service.FakeValuesService;
+import com.github.javafaker.service.RandomService;
 
 public class CommonMethods extends Assertions{
 	
 	public static Faker fake = new Faker();
+	public static FakeValuesService faker = new FakeValuesService(new Locale("en-GB"), new RandomService());
 	
 	// This method will select a single webelement from a list of webelements 
 	//Remember the given String must match with webelement
@@ -22,15 +27,15 @@ public class CommonMethods extends Assertions{
 		}
 	}
 	//This method will click on a single webelement
-	public static void click(WebElement element) {
+	public void click(WebElement element) {
 		wait(element).click();
 	}
 	//This method is Explicit wait
-	public static WebElement wait(WebElement element) {
+	public WebElement wait(WebElement element) {
 		return wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
-	public static WebElement waitElementDisplayed(WebElement element) {
+	public WebElement waitElementDisplayed(WebElement element) {
 		return wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
@@ -44,5 +49,25 @@ public class CommonMethods extends Assertions{
 		sendTextByConfig(username, user);
 		sendTextByConfig(password, pass);
 	}
+	//thread.sleep
+	public void threadSleep(int time) {
+		try {
+			Thread.sleep(time*1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	//this method will scroll up web page
+	public void scrollUp() {
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+		js.executeScript("window.scrollTo(0, -document.body.scrollHeight);");
+	}
+	//this method will scroll down web page
+	public void scrollDown() {
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight);");;
+	}
+	
+	
 	
 }
