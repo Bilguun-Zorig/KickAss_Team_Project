@@ -201,6 +201,7 @@ public class PIMPageObjects {
 		cm.click(getBloodType());
 		cm.selection(getNationalitiesList(), "bType");
 		getSaveCFButton().click();	
+		
 	}
 	
 	
