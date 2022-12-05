@@ -43,6 +43,10 @@ public class CommonMethods extends Assertions{
 	public void sendTextByConfig(WebElement element, String keyName) {
 		element.sendKeys(BaseClass.getLogin(keyName));
 	}
+	// This method will send data from configAppText.properties to the webElement
+	public void sendTextByConfigText(WebElement element, String keyName) {
+		element.sendKeys(BaseClass.getAppText(keyName));
+	}
 	// This method will send login values (username and password) to the each text-box 
 	// Also it makes 2 lines of code 1 line
 	public void sendLoginValues(WebElement username, String user,WebElement password, String pass) {
@@ -67,7 +71,21 @@ public class CommonMethods extends Assertions{
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight);");;
 	}
-	
+	//this methods has nested loop
+	// - outside each for loop will iterate through each drop-down menu on the same page and then pick/click on a text-box that 
+	// matches the given text (Title of the text-box)
+	// - inside loop will select a element from the drop-down menu
+	public void selectEInfo(List<WebElement> infoList, String infoType, List<WebElement> selections, String status) {
+		for(WebElement info : infoList) {
+			if(info.getText().contains(BaseClass.getAppText(infoType))) {
+				info.click();
+				scrollUp();
+				threadSleep(3);
+				selection(selections, status);
+				break;
+			}
+		}
+	}
 	
 	
 }

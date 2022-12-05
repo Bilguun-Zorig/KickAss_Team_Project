@@ -1,5 +1,6 @@
 package projectTest;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -19,9 +20,8 @@ public class PIM_Page_Test_By_Bill extends CommonMethods {
 		selection(cpo.leftSideMenuBar, "pim");
 		asserts(ppo.getPimPageText(), "pim");
 	}
-	@Test (enabled = false)
+	@Test (enabled = true)
 	public void addNewEmployee() {
-
 		selection(ppo.getTopBarMenu(), "ae");
 		asserts(ppo.getAddEmployeeTitle(), "ae");
 		ppo.sendFirstLastName();
@@ -30,17 +30,32 @@ public class PIM_Page_Test_By_Bill extends CommonMethods {
 		asserts(ppo.getPersonalDetails());
 		ppo.fillPersonalDetails();
 		selection(ppo.getTopBarMenu(), "eL");
-		asserts(ppo.getEmployeeList(), ppo.value);
+		asserts(ppo.getEmployeeIDList(), ppo.value);
 	}
-	@Test
+	@Test (enabled = true)
 	public void searchForEmployee() {
 		asserts(ppo.getEmployeeInfoText());
-		
+		selectEInfo(ppo.getEmployeeInfoList(), "es", ppo.getNationalitiesList(), "status");
+		selectEInfo(ppo.getEmployeeInfoList(), "jobTitle", ppo.getNationalitiesList(), "jT");
+		selection(ppo.getCancelSaveButton(), "search");
+		asserts(ppo.getJobTitleList(), "jT");
+		Assert.assertTrue(false); // intentionally get this test failed to show if Ss capture works and Retry 2 times
 	}
-	@Test
-	public void createANewReportTable() {}
-
-	@AfterMethod (enabled = false)
+	@Test 
+	public void createANewReportTable() {
+		selection(ppo.getTopBarMenu(), "rs");
+		asserts(ppo.getEmployeeReportText(), "er");
+		selection(ppo.getCancelSaveButton(), "add");
+		sendTextByConfigText(ppo.getReportNameInputField(), "reportName");
+		selectEInfo(ppo.getEmployeeInfoList(), "sc", ppo.getNationalitiesList(), "en");
+		selectEInfo(ppo.getEmployeeInfoList(), "include", ppo.getNationalitiesList(), "cape");
+		selectEInfo(ppo.getEmployeeInfoList(), "sdfg", ppo.getNationalitiesList(), "ec");
+		click(ppo.getPlusButton());
+		ppo.selection(ppo.getListOfItems(), "removed", ppo.getRemoveItemButton());
+		selection(ppo.getCancelSaveButton(), "save");
+		asserts(ppo.getReportName());
+	}
+	@AfterMethod (enabled = true)
 	public void logoutFunctionality() {
 		click(cpo.userDropdownMenu);
 		selection(cpo.userDropdownMenuItems, "logout");
