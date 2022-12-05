@@ -2,9 +2,9 @@ package pageObjects;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.ClickAction;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -38,6 +38,8 @@ public class KPIPerformancePageObjects {
 	public WebElement saveButton;
 	@FindBy (xpath = "//*[@class='oxd-form']/div[1]/div/div[2]/div/div[2]/div/div[2]")
 	public WebElement jobDropdown;
+	@FindBy (xpath = "//*[@class='orangehrm-paper-container']/div[3]/div/div[2]/div/div/div[2]/div")
+	public List<WebElement> listOfKpi;
 	
 	public void clickDownKey() {
 		jobTitleBox.sendKeys(Keys.ARROW_DOWN);
@@ -47,5 +49,22 @@ public class KPIPerformancePageObjects {
 		jobTitleBox.sendKeys(Keys.ENTER);
 	}
 	
+	public void clickEditButton(List<WebElement> listOfKpi, String pkiname) {
+		int counter = 1;
+		for(WebElement kpi : listOfKpi) {
+			System.out.println(counter);
+			if(kpi.getText().trim().equalsIgnoreCase(BaseClass.getAppText(pkiname).trim())) {
+				System.out.println(kpi.getText());
+//				editButton.click();
+				BaseClass.getDriver().findElement(By.xpath("//*[@class='orangehrm-paper-container']/div[3]/div/div[2]/div["+counter+"]/div/div[7]/div/button[1]/i")).click();
+				keyInputBox.click();
+				for(int i=1; i<50; i++) {
+					keyInputBox.sendKeys(Keys.BACK_SPACE);
+				}
+				break;
+			}
+			counter ++;
+		}
+	}
 
 }
