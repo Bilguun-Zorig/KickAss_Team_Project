@@ -22,15 +22,15 @@ public class CommonMethods extends Assertions{
 		}
 	}
 	//This method will click on a single webelement
-	public static void click(WebElement element) {
+	public void click(WebElement element) {
 		wait(element).click();
 	}
 	//This method is Explicit wait
-	public static WebElement wait(WebElement element) {
+	public WebElement wait(WebElement element) {
 		return wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
-	public static WebElement waitElementDisplayed(WebElement element) {
+	public WebElement waitElementDisplayed(WebElement element) {
 		return wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
