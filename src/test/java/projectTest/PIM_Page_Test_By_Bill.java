@@ -39,7 +39,6 @@ public class PIM_Page_Test_By_Bill extends CommonMethods {
 		selectEInfo(ppo.getEmployeeInfoList(), "jobTitle", ppo.getNationalitiesList(), "jT");
 		selection(ppo.getCancelSaveButton(), "search");
 		asserts(ppo.getJobTitleList(), "jT");
-		Assert.assertTrue(false); // intentionally get this test failed to show if Ss capture works and Retry 2 times
 	}
 	@Test 
 	public void createANewReportTable() {
@@ -53,6 +52,7 @@ public class PIM_Page_Test_By_Bill extends CommonMethods {
 		click(ppo.getPlusButton());
 		ppo.selection(ppo.getListOfItems(), "removed", ppo.getRemoveItemButton());
 		selection(ppo.getCancelSaveButton(), "save");
+		waitElementDisplayed(ppo.getReportName());
 		asserts(ppo.getReportName());
 	}
 	@AfterMethod (enabled = true)
