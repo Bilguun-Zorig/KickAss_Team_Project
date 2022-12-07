@@ -52,7 +52,7 @@ public class PIM_Page_Test_By_Bill extends CommonMethods {
 		click(ppo.getPlusButton());
 		ppo.selection(ppo.getListOfItems(), "removed", ppo.getRemoveItemButton());
 		selection(ppo.getCancelSaveButton(), "save");
-		waitElementDisplayed(ppo.getReportName());
+		threadSleep(3);
 		asserts(ppo.getReportName());
 	}
 	@AfterMethod (enabled = true)
