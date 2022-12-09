@@ -3,6 +3,7 @@ package utilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageObjects.CommonPageObjects;
+import pageObjects.DirectoryPage;
 import pageObjects.HomePageObjects;
 import pageObjects.KPIPerformancePageObjects;
 
@@ -21,6 +22,7 @@ public class PageInitializer extends BaseClass{
 	public static LeavePageObjects lpo;
 	public static MyInfoPageObjects mipo;
 	public static RecruitmentPageObjects rpo;
+	public static DirectoryPage dp;
 
 	public static void initializer() {
 		wait = new WebDriverWait(BaseClass.getDriver(), Constants.Explicit_Wait_Time);
@@ -31,6 +33,7 @@ public class PageInitializer extends BaseClass{
 		mipo = new MyInfoPageObjects ();
 		rpo = new RecruitmentPageObjects();
 		lpo = new LeavePageObjects();
+		dp = new DirectoryPage();
 
 	}
 }
