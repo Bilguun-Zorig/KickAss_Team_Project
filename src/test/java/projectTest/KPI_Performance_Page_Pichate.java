@@ -32,8 +32,7 @@ public class KPI_Performance_Page_Pichate extends CommonMethods{
 		sendTextByConfigText(kppo.jobTitleBox, "a");
 		click(kppo.jobDropdown);
 		click(kppo.saveButton);
-		asserts(kppo.pageHeader, "pf");
-		
+		asserts(kppo.listOfKpi, kppo.lastKpi());
 	}
 	
 	@Test(enabled=true)
@@ -42,10 +41,19 @@ public class KPI_Performance_Page_Pichate extends CommonMethods{
 		asserts(kppo.subHeader, "ek");
 		sendTextByConfigText(kppo.keyInputBox, "ekiptx");
 		click(kppo.saveButton);
-		asserts(kppo.pageHeader, "pf");
+		asserts(kppo.listOfKpi, kppo.lastKpi());
 	}
 	
-	@AfterMethod(enabled=true)
+	@Test(enabled=true)
+	public void test03DeleteKPI() {
+		kppo.selectKPI(kppo.listOfKpi, "ekiptx");
+		scrollUp();
+		click(kppo.deleteButton);
+		click(kppo.yesDeleteButton);
+		asserts(kppo.listOfKpi, kppo.lastKpi());
+	}
+	
+	@AfterMethod
 	public void loggingOut() {
 		click(cpo.userDropdownMenu);
 		selection(cpo.userDropdownMenuItems, "logout");
