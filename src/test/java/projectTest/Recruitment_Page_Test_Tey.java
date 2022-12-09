@@ -1,9 +1,14 @@
 package projectTest;
 
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.Alert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import utilities.BaseClass;
 import utilities.CommonMethods;
 
 public class Recruitment_Page_Test_Tey extends CommonMethods {
@@ -19,16 +24,13 @@ public class Recruitment_Page_Test_Tey extends CommonMethods {
 
 	@Test(enabled = true, priority = 1)
 	public void addCandidate() {
-		// check add button then click
-		asserts(rpo.addCandidateButton);
+		
+		asserts(rpo.addCandidateButton);// check add button then click
 		click(rpo.addCandidateButton);
-		// check add candidate form
-		asserts(rpo.addCandidateHeaderForm);
-		// add information
-		rpo.candidateDetails();
+		asserts(rpo.addCandidateHeaderForm);// check add candidate form
+		rpo.candidateDetails(); 	// add information
 		click(rpo.saveAddForm);
-		// check candidate button then click
-		asserts(rpo.candidateButton);
+		asserts(rpo.candidateButton);// check candidate button then click
 		click(rpo.candidateButton);
 	}
 
@@ -49,10 +51,18 @@ public class Recruitment_Page_Test_Tey extends CommonMethods {
 	@Test(enabled = true, priority = 3)
 	public void deleteCandidate() {
 
+		String parentWindowHandler = BaseClass.getDriver().getWindowHandle(); // Store your parent window
+		String subWindowHandler = null;
+
 		asserts(rpo.deleteButton);
 		click(rpo.deleteButton);
-		asserts(rpo.comfirmDelete);
+		
+		Set<String> handles = BaseClass.getDriver().getWindowHandles(); // get all window handles
+		Iterator<String> iterator = handles.iterator();
+		subWindowHandler = iterator.next();
+		BaseClass.getDriver().switchTo().window(subWindowHandler); // switch to popup window
 		click(rpo.comfirmDelete);
+		BaseClass.getDriver().switchTo().window(parentWindowHandler); // switch back to parent window
 
 	}
 
