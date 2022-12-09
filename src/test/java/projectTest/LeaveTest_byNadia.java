@@ -53,7 +53,7 @@ public class LeaveTest_byNadia extends CommonMethods {
 	}	
 	
 	@Test(enabled = true, priority = 3)
-	public void cancelMyLeaveAndWriteComment() {
+	public void rejectAssignLeave() {
 		selection(lpo.leaveMenuBar, "myLeave");
 		asserts(lpo.myLeaveText,"myLeaveText_exp");	
 		lpo.rejectAssignLeave(lpo.tableList);			
