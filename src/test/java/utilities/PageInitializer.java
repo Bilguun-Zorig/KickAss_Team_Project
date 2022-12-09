@@ -18,7 +18,7 @@ public class PageInitializer extends BaseClass{
 	public static CommonPageObjects cpo;
 	public static PIMPageObjects ppo;
 	public static KPIPerformancePageObjects kppo;
-
+	public static LeavePageObjects lpo;
 	public static MyInfoPageObjects mipo;
 	public static RecruitmentPageObjects rpo;
 
@@ -28,7 +28,7 @@ public class PageInitializer extends BaseClass{
 		cpo = new CommonPageObjects();
 		ppo = new PIMPageObjects();
 		kppo = new KPIPerformancePageObjects();
-	  mipo = new MyInfoPageObjects ();
+		mipo = new MyInfoPageObjects ();
 		rpo = new RecruitmentPageObjects();
 		lpo = new LeavePageObjects();
 
