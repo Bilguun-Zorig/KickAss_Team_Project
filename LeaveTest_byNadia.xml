@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+	<listeners>
+		<listener class-name="utilities.RetryListener"/>
+	</listeners>
+  
+  
+  <test thread-count="5" name="LeaveTest">
+    <classes>
+      <class name="projectTest.LeaveTest_byNadia"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
