@@ -24,47 +24,35 @@ public class MyInfo_Page_Alin extends CommonMethods{
 		asserts(mipo.hompageHead,"pim");
 		selection(mipo.myInfoSideBar,"emc");
 		asserts(mipo.emergencyContactHead,"aemc");
-		
 	}
 	@Test (priority = 1,enabled = true)
 	public void assignEmergencyContacts() {
-		
 		click(mipo.addContact);
 		asserts(mipo.addEmergencyHead,"semc");
 		mipo.addEmergencyContact();
 		mipo.saveButton.click();
 		asserts(mipo.emergencyContactHead,"aemc");
 	}
-	
 	@Test (priority = 2,enabled = true)
  	public void editEmergencyContact() {
-		
 		click(mipo.editIcon);
 		asserts(mipo.editEmergencyContactHead,"edmc");
 		mipo.editSelection();
 		threadSleep(5);
 		mipo.saveButton.click();
 		asserts(mipo.emergencyContactHead,"aemc");
-		
-		
-		
 	}
 	
 	@Test (priority = 3,enabled = true)
 	public void deleteContacts() {
-		
 		click(mipo.deleteIcon);
 		click(mipo.deletebutton);
 		asserts(mipo.emergencyContactHead,"aemc");
-		
 	}
 	
 	@AfterMethod
 	public void loggingOut() {
 		click(cpo.userDropdownMenu);
 		selection(cpo.userDropdownMenuItems, "logout");
-		
 	}
-		
-
 }
