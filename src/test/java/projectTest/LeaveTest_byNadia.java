@@ -2,10 +2,13 @@ package projectTest;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import utilities.CommonMethods;
+import utilities.ListenerAnalyzer;
 
+@Listeners(ListenerAnalyzer.class)
 public class LeaveTest_byNadia extends CommonMethods {
 	
 	@BeforeMethod
@@ -13,11 +16,11 @@ public class LeaveTest_byNadia extends CommonMethods {
 		sendLoginValues(hpo.usernameTextbox, "username", hpo.passwordTextbox, "password");
 		click(hpo.loginButton);
 		selection(cpo.leftSideMenuBar, "leaveMenu");
+		asserts(lpo.leavePageText, "Leave_exp");
 	}
 	
-	@Test(enabled = false)
-	public void viewLeaveReport() {
-		asserts(lpo.leavePageText, "Leave_exp");
+	@Test(enabled = true, priority = 1)
+	public void viewLeaveReport() {		
 		selection(lpo.leaveMenuBar, "reportOption");		
 		click(lpo.usageReport);
 		asserts(lpo.usageReportText, "usageReport_exp");
@@ -32,39 +35,64 @@ public class LeaveTest_byNadia extends CommonMethods {
 		lpo.exitScreen.click();
 	}
 	
-	@Test(enabled = true)
-	public void assignLeave() {
-		asserts(lpo.leavePageText, "Leave_exp");
+	@Test(enabled = true, priority = 2)
+	public void assignLeave() {		
 		selection(lpo.leaveMenuBar, "assignLeave");
-		asserts(lpo.assignLeaveText,"assignLeave");
-		
+		asserts(lpo.assignLeaveText,"assignLeave");		
 		click(lpo.searchName);			
 		lpo.searchName.sendKeys(lpo.getAdminFirstName(lpo.adminName));		
 		lpo.selectSearchDropdown(lpo.searchNameList,lpo.getAdminFirstName(lpo.adminName));		
-		
-		lpo.selectOptionDropdown(lpo.leaveType, lpo.dropdownList, "leaveType");
-		
+		lpo.selectOptionDropdown(lpo.leaveType, lpo.dropdownList, "leaveType");		
 		sendTextByConfigText(lpo.fromDate, "dateWrongFormat");
 		wait(lpo.toDate);
 		click(lpo.toDate);
-		asserts(lpo.dateErrorText,"dateErrorText_exp");
-		
-		lpo.fillFromToDates("leaveDate", "leaveDate","duration");
-		
+		asserts(lpo.dateErrorText,"dateErrorText_exp");		
+		lpo.fillFromToDates("leaveDate", "leaveDate","duration");		
 		click(lpo.submitButton);
 		lpo.AssertDayBalance(lpo.dayBalance);
+	}	
+	
+	@Test(enabled = true, priority = 3)
+	public void rejectAssignLeave() {
+		selection(lpo.leaveMenuBar, "myLeave");
+		asserts(lpo.myLeaveText,"myLeaveText_exp");	
+		lpo.rejectAssignLeave(lpo.tableList);			
 	}
 	
-	
-	@Test(enabled = false)
-	public void cancelMyLeaveAndWriteComment() {
-		
-		
-	}
-	
-	@AfterMethod(enabled = false)
+	@AfterMethod(enabled = true)
 	public void logoutFunctionality() {
 		click(cpo.userDropdownMenu);
 		selection(cpo.userDropdownMenuItems, "logout");
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
