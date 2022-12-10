@@ -7,6 +7,7 @@ import pageObjects.HomePageObjects;
 import pageObjects.KPIPerformancePageObjects;
 import pageObjects.LeavePageObjects;
 import pageObjects.PIMPageObjects;
+import pageObjects.TimePageObject;
 
 public class PageInitializer extends BaseClass{
 	
@@ -16,6 +17,7 @@ public class PageInitializer extends BaseClass{
 	public static PIMPageObjects ppo;
 	public static KPIPerformancePageObjects kppo;
 	public static LeavePageObjects lpo;
+	public static TimePageObject tpo;
 	
 	public static void initializer() {
 		wait = new WebDriverWait(BaseClass.getDriver(), Constants.Explicit_Wait_Time);
@@ -24,5 +26,6 @@ public class PageInitializer extends BaseClass{
 		ppo = new PIMPageObjects();
 		kppo = new KPIPerformancePageObjects();
 		lpo = new LeavePageObjects();
+		tpo= new TimePageObject();
 	}
 }
