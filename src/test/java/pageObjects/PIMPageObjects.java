@@ -17,6 +17,7 @@ public class PIMPageObjects {
 	}
 
 	CommonMethods cm = new CommonMethods();
+	
 	public String value;
 	private String firstName = CommonMethods.fake.name().firstName();
 	private String lastName = CommonMethods.fake.name().lastName();

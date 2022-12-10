@@ -10,7 +10,9 @@ import pageObjects.KPIPerformancePageObjects;
 import pageObjects.MyInfoPageObjects;
 import pageObjects.LeavePageObjects;
 import pageObjects.PIMPageObjects;
+import pageObjects.TimePageObject;
 import pageObjects.RecruitmentPageObjects;
+
 
 public class PageInitializer extends BaseClass{
 	
@@ -20,10 +22,10 @@ public class PageInitializer extends BaseClass{
 	public static PIMPageObjects ppo;
 	public static KPIPerformancePageObjects kppo;
 	public static LeavePageObjects lpo;
+	public static TimePageObject tpo;
 	public static MyInfoPageObjects mipo;
 	public static RecruitmentPageObjects rpo;
 	public static DirectoryPage dp;
-
 	public static void initializer() {
 		wait = new WebDriverWait(BaseClass.getDriver(), Constants.Explicit_Wait_Time);
 		hpo = new HomePageObjects();
@@ -33,7 +35,7 @@ public class PageInitializer extends BaseClass{
 		mipo = new MyInfoPageObjects ();
 		rpo = new RecruitmentPageObjects();
 		lpo = new LeavePageObjects();
+		tpo= new TimePageObject();
 		dp = new DirectoryPage();
-
 	}
 }
