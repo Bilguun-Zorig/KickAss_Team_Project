@@ -50,11 +50,12 @@ public class MyInfo_Page_Alin extends CommonMethods{
 		
 	}
 	
-	@Test (priority = 3,enabled = false)
+	@Test (priority = 3,enabled = true)
 	public void deleteContacts() {
 		
 		click(mipo.deleteIcon);
 		click(mipo.deletebutton);
+		asserts(mipo.emergencyContactHead,"aemc");
 		
 	}
 	
@@ -62,6 +63,7 @@ public class MyInfo_Page_Alin extends CommonMethods{
 	public void loggingOut() {
 		click(cpo.userDropdownMenu);
 		selection(cpo.userDropdownMenuItems, "logout");
+		
 	}
 		
 
