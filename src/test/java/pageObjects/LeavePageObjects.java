@@ -121,21 +121,19 @@ public class LeavePageObjects {
 //---------------------------------------------------------------------------------	
 	public void rejectAssignLeave(List<WebElement> recordTable) {
 		for(int i=0; i<recordTable.size(); i++) {
-			//System.out.println("reject Loop: "+ i);
 			readTable(recordTable,i);
 		}
 	}	
-
-	public void readTable(List<WebElement> recordTable, int index) {
-		
+	public void readTable(List<WebElement> recordTable, int index) {		
 		cm.wait.until(ExpectedConditions.visibilityOfAllElements(recordTable));
 		for (WebElement ea : recordTable) {
-			//System.out.println("index forEach: "+index +"  "+ ea.getText());
 			cm.wait(ea);	
 			String[] lines = ea.getText().split("\n");
 			if(Double.parseDouble(lines[3])<0 ) {
-				//System.out.println("index IF: "+index +"  "+ea.getText());
 				cm.click(cancelButtonList.get(index));
+				cm.wait(popupBox);
+				cm.highLightElementMethod(popupBox);	
+				as.asserts(popupBox);	
 				break;
 			}
 			index++;	
@@ -206,7 +204,7 @@ public class LeavePageObjects {
 			as.asserts(popupBox);			
 		}
 	}	
-
+	
 //**dynamic popUptext with multiple lines of String in one element	
 	public void AssertPopupText(WebElement actual,String expected) {
 		cm.wait(actual);
@@ -224,9 +222,6 @@ public class LeavePageObjects {
 		}		
 		AssertsTwoStrings(keyMsg, expected);
 	}
-
-	
-
 }
 
 

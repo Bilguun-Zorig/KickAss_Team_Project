@@ -1,12 +1,12 @@
 package pageObjects;
 
 import java.util.List;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+
 import utilities.BaseClass;
 import utilities.CommonMethods;
 
@@ -26,13 +26,13 @@ public class DirectoryPage {
 
 	@FindBy(xpath = "//input[@placeholder=\"Type for hints...\"]")
 	public WebElement searchName;
-	
+
 	@FindBy(xpath = "//div[@class='oxd-form-actions']/button[2]")
 	public WebElement searchButton;
 
 	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/div/div/div[1]")
 	public WebElement jobTitle;
-	
+
 	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[3]/div/div[2]/div/div/div[1]")
 	public WebElement locationFiled;
 
@@ -58,16 +58,16 @@ public class DirectoryPage {
 	public String getAdminFirstName(WebElement element) {
 		return element.getText().substring(0, element.getText().indexOf(" "));
 	}
-	
+
 	public void selectJob(int index) {
-		for(int i=1; i<=index; i++) {
+		for (int i = 1; i <= index; i++) {
 			jobTitle.sendKeys(Keys.ARROW_DOWN);
 		}
 		jobTitle.sendKeys(Keys.ENTER);
 	}
-	
+
 	public void selectLocation(int index) {
-		for(int i=1; i<=index; i++) {
+		for (int i = 1; i <= index; i++) {
 			locationFiled.sendKeys(Keys.ARROW_DOWN);
 		}
 		locationFiled.sendKeys(Keys.ENTER);

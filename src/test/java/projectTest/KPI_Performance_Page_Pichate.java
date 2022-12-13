@@ -23,7 +23,6 @@ public class KPI_Performance_Page_Pichate extends CommonMethods{
 		asserts(kppo.dropdownMenu, "kpi");
 		selection(kppo.dropdownMenu, "kpi");
 	}
-		
 	@Test(enabled=true)
 	public void test01AddKPI() {
 		click(kppo.addButton);
@@ -34,7 +33,6 @@ public class KPI_Performance_Page_Pichate extends CommonMethods{
 		click(kppo.saveButton);
 		asserts(kppo.listOfKpi, kppo.lastKpi());
 	}
-	
 	@Test(enabled=true)
 	public void test02EditKPI() {
 		kppo.clickEditButton(kppo.listOfKpi, "kiptx");
@@ -43,7 +41,6 @@ public class KPI_Performance_Page_Pichate extends CommonMethods{
 		click(kppo.saveButton);
 		asserts(kppo.listOfKpi, kppo.lastKpi());
 	}
-	
 	@Test(enabled=true)
 	public void test03DeleteKPI() {
 		kppo.selectKPI(kppo.listOfKpi, "ekiptx");
@@ -52,12 +49,9 @@ public class KPI_Performance_Page_Pichate extends CommonMethods{
 		click(kppo.yesDeleteButton);
 		asserts(kppo.listOfKpi, kppo.lastKpi());
 	}
-	
 	@AfterMethod
 	public void loggingOut() {
 		click(cpo.userDropdownMenu);
 		selection(cpo.userDropdownMenuItems, "logout");
 	}
-		
-	
 }

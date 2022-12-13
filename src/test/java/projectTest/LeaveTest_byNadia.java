@@ -42,14 +42,10 @@ public class LeaveTest_byNadia extends CommonMethods {
 		click(lpo.searchName);			
 		lpo.searchName.sendKeys(lpo.getAdminFirstName(lpo.adminName));		
 		lpo.selectSearchDropdown(lpo.searchNameList,lpo.getAdminFirstName(lpo.adminName));		
-		lpo.selectOptionDropdown(lpo.leaveType, lpo.dropdownList, "leaveType");		
-		sendTextByConfigText(lpo.fromDate, "dateWrongFormat");
-		wait(lpo.toDate);
-		click(lpo.toDate);
-		asserts(lpo.dateErrorText,"dateErrorText_exp");		
+		lpo.selectOptionDropdown(lpo.leaveType, lpo.dropdownList, "leaveType");			
 		lpo.fillFromToDates("leaveDate", "leaveDate","duration");		
 		click(lpo.submitButton);
-		lpo.AssertDayBalance(lpo.dayBalance);
+		lpo.AssertDayBalance(lpo.dayBalance);		
 	}	
 	
 	@Test(enabled = true, priority = 3)
