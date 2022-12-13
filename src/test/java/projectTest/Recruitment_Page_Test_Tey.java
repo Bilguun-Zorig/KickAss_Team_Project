@@ -1,14 +1,8 @@
 package projectTest;
 
-import java.util.Iterator;
-import java.util.Set;
-
-import org.openqa.selenium.Alert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import utilities.BaseClass;
 import utilities.CommonMethods;
 
 public class Recruitment_Page_Test_Tey extends CommonMethods {
@@ -26,13 +20,13 @@ public class Recruitment_Page_Test_Tey extends CommonMethods {
 		asserts(rpo.addCandidateButton);// check add button then click
 		click(rpo.addCandidateButton);
 		asserts(rpo.addCandidateHeaderForm);// check add candidate form
-		rpo.candidateDetails(); 	// add information
+		rpo.candidateDetails(); // add information
 		click(rpo.saveAddForm);
 		asserts(rpo.candidateButton);// check candidate button then click
 		click(rpo.candidateButton);
 	}
 	@Test(enabled = true, priority = 2)
-	public void arejectCandidate() {
+	public void rejectCandidate() {
 		asserts(rpo.actionButton);
 		click(rpo.actionButton);
 		asserts(rpo.rejectButton);
@@ -44,6 +38,9 @@ public class Recruitment_Page_Test_Tey extends CommonMethods {
 	}
 	@Test(enabled = true, priority = 3)
 	public void deleteCandidate() {
+		asserts(rpo.deleteButton);
+		click(rpo.deleteButton);
+		rpo.confirmDeleteAlert();
 		String parentWindowHandler = BaseClass.getDriver().getWindowHandle(); // Store your parent window
 		String subWindowHandler = null;
 		asserts(rpo.deleteButton);
