@@ -1,6 +1,8 @@
 package pageObjects;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,9 +31,9 @@ public class RecruitmentPageObjects {
 	public WebElement firstNameInputBox;
 	@FindBy(name = "lastName")
 	public WebElement lastNameInputBox;
-	@FindBy(xpath = "//*[@class='oxd-select-text-input']")
+	@FindBy(xpath = "//*[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow']")
 	public WebElement vacancy;
-	@FindBy(xpath = "//*[@class='oxd-select-dropdown --positon-bottom']")
+	@FindBy(xpath = "//*[contains(@class,'--positon-bottom')]/div")
 	public List<WebElement> vacancySelection;
 	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/div/div[1]/div/div[2]/input")
 	public WebElement emailInputBox;
@@ -54,12 +56,25 @@ public class RecruitmentPageObjects {
 
 	public void sev(List<WebElement> ele, String eleTxt) {
 		for (WebElement element : ele) {
-			if (element.getText().trim().equalsIgnoreCase(BaseClass.getAppText(eleTxt).trim()))
-				;
-			cm.highLightElementMethod(element);
-			element.click();
-			break;
+			if (element.getText().trim().equalsIgnoreCase(BaseClass.getAppText(eleTxt).trim())) {
+				cm.highLightElementMethod(element);
+				element.click();
+				break;
+			}
 		}
+	}
+
+	public void confirmDelete() {
+
+		String parentWindowHandler = BaseClass.getDriver().getWindowHandle(); // Store your parent window
+		String subWindowHandler = null;
+
+		Set<String> handles = BaseClass.getDriver().getWindowHandles(); // get all window handles
+		Iterator<String> iterator = handles.iterator();
+		subWindowHandler = iterator.next();
+		BaseClass.getDriver().switchTo().window(subWindowHandler); // switch to popup window
+		cm.click(comfirmDelete);
+		BaseClass.getDriver().switchTo().window(parentWindowHandler); // switch back to parent window
 	}
 
 	public void candidateDetails() {

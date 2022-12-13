@@ -1,16 +1,14 @@
 package projectTest;
 
-import java.util.Iterator;
-import java.util.Set;
-
-import org.openqa.selenium.Alert;
 import org.testng.annotations.AfterMethod;
+
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-import utilities.BaseClass;
 import utilities.CommonMethods;
+import utilities.ListenerAnalyzer;
 
+@Listeners(ListenerAnalyzer.class)
 public class Recruitment_Page_Test_Tey extends CommonMethods {
 
 	@BeforeMethod
@@ -35,7 +33,7 @@ public class Recruitment_Page_Test_Tey extends CommonMethods {
 	}
 
 	@Test(enabled = true, priority = 2)
-	public void arejectCandidate() {
+	public void rejectCandidate() {
 
 		asserts(rpo.actionButton);
 		click(rpo.actionButton);
@@ -51,18 +49,9 @@ public class Recruitment_Page_Test_Tey extends CommonMethods {
 	@Test(enabled = true, priority = 3)
 	public void deleteCandidate() {
 
-		String parentWindowHandler = BaseClass.getDriver().getWindowHandle(); // Store your parent window
-		String subWindowHandler = null;
-
 		asserts(rpo.deleteButton);
 		click(rpo.deleteButton);
-		
-		Set<String> handles = BaseClass.getDriver().getWindowHandles(); // get all window handles
-		Iterator<String> iterator = handles.iterator();
-		subWindowHandler = iterator.next();
-		BaseClass.getDriver().switchTo().window(subWindowHandler); // switch to popup window
-		click(rpo.comfirmDelete);
-		BaseClass.getDriver().switchTo().window(parentWindowHandler); // switch back to parent window
+		rpo.confirmDelete();
 
 	}
 
