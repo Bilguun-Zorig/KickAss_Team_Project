@@ -30,10 +30,11 @@ public class DirectoryPage {
 	@FindBy(xpath = "//div[@class='oxd-form-actions']/button[2]")
 	public WebElement searchButton;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/div/div/div[1]")
+	
+	@FindBy(xpath = "//*[@class='oxd-grid-3']/div[2]/div/div[2]/div/div/div[1]")
 	public WebElement jobTitle;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[3]/div/div[2]/div/div/div[1]")
+	@FindBy(xpath = "//*[@class='oxd-grid-3']/div[3]/div/div[2]/div/div/div[1]")
 	public WebElement locationFiled;
 
 	@FindBy(xpath = "//div[@class='oxd-autocomplete-dropdown --positon-bottom']/div")
