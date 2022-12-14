@@ -40,7 +40,6 @@ public class Recruitment_Page_Test_Tey extends CommonMethods {
 	public void deleteCandidate() {
 		asserts(rpo.deleteButton);
 		click(rpo.deleteButton);
-		
 		rpo.confirmDeleteAlert();
 		String parentWindowHandler = BaseClass.getDriver().getWindowHandle(); // Store your parent window
 		String subWindowHandler = null;
