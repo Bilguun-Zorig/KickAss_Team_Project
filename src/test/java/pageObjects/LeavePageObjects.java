@@ -7,7 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import utilities.Assertions;
@@ -108,11 +108,37 @@ public class LeavePageObjects {
 	@FindBy(xpath = "//div[@id='oxd-toaster_1']")
 	public WebElement popupBox;
 	
+//-----------------------------------------------------------------------------
+	@FindBy(xpath = "//div[@class='oxd-table-filter-header-title']/h5")
+	public WebElement myLeaveText;
 	
+	@FindBy(xpath = "//div[@class='oxd-table-body']/div")
+	public List<WebElement> tableList;
 	
+	@FindBy(xpath = "//div[@class='oxd-table-cell-actions']")
+	public List<WebElement> cancelButtonList;
 	
-	
-	
+//---------------------------------------------------------------------------------	
+	public void rejectAssignLeave(List<WebElement> recordTable) {
+		for(int i=0; i<recordTable.size(); i++) {
+			readTable(recordTable,i);
+		}
+	}	
+	public void readTable(List<WebElement> recordTable, int index) {		
+		cm.wait.until(ExpectedConditions.visibilityOfAllElements(recordTable));
+		for (WebElement ea : recordTable) {
+			cm.wait(ea);	
+			String[] lines = ea.getText().split("\n");
+			if(Double.parseDouble(lines[3])<0 ) {
+				cm.click(cancelButtonList.get(index));
+				cm.wait(popupBox);
+				cm.highLightElementMethod(popupBox);	
+				as.asserts(popupBox);	
+				break;
+			}
+			index++;	
+		}		
+	}		
 	
 //**to select option from dropdown menu 
 	public void selectOptionDropdown(WebElement dropdownBox, List<WebElement> dropdownList,String option){
@@ -178,7 +204,7 @@ public class LeavePageObjects {
 			as.asserts(popupBox);			
 		}
 	}	
-
+	
 //**dynamic popUptext with multiple lines of String in one element	
 	public void AssertPopupText(WebElement actual,String expected) {
 		cm.wait(actual);
@@ -186,7 +212,7 @@ public class LeavePageObjects {
 		String[] lines = actual.getText().split("\n");
 		System.out.println("line of text: "+lines.length);
 		for(int i=0; i<lines.length;i++) {
-			System.out.println(lines[i]);
+			System.out.println(i+") "+lines[i]);
 		}
 		String keyMsg = null;
 		if(lines.length>1) {
@@ -196,9 +222,6 @@ public class LeavePageObjects {
 		}		
 		AssertsTwoStrings(keyMsg, expected);
 	}
-
-	
-
 }
 
 
