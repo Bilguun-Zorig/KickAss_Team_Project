@@ -40,18 +40,8 @@ public class Recruitment_Page_Test_Tey extends CommonMethods {
 	public void deleteCandidate() {
 		asserts(rpo.deleteButton);
 		click(rpo.deleteButton);
-		
 		rpo.confirmDeleteAlert();
-		String parentWindowHandler = BaseClass.getDriver().getWindowHandle(); // Store your parent window
-		String subWindowHandler = null;
-		asserts(rpo.deleteButton);
-		click(rpo.deleteButton);
-		Set<String> handles = BaseClass.getDriver().getWindowHandles(); // get all window handles
-		Iterator<String> iterator = handles.iterator();
-		subWindowHandler = iterator.next();
-		BaseClass.getDriver().switchTo().window(subWindowHandler); // switch to popup window
-		click(rpo.comfirmDelete);
-		BaseClass.getDriver().switchTo().window(parentWindowHandler); // switch back to parent window
+	
 	}
 	@AfterMethod(enabled = true)
 	public void logout() {
