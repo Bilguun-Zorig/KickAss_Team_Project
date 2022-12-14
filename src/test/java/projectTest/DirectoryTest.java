@@ -1,10 +1,12 @@
 package projectTest;
 
+import org.openqa.selenium.Keys;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import utilities.BaseClass;
 import utilities.CommonMethods;
 import utilities.ListenerAnalyzer;
 
@@ -28,7 +30,8 @@ public class DirectoryTest extends CommonMethods{
 		click(dp.searchButton);
 	}
 	@Test(enabled=true)
-	public void jobTitleTest() {		
+	public void jobTitleTest() {
+		click(dp.jobTitle);
 		click(dp.jobTitle);
 		dp.selectJob(3);
 		click(dp.searchButton);
