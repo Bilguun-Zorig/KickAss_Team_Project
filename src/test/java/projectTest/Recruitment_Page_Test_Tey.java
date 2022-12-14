@@ -47,6 +47,7 @@ public class Recruitment_Page_Test_Tey extends CommonMethods {
 
 		asserts(rpo.deleteButton);
 		click(rpo.deleteButton);
+		
 		rpo.confirmDeleteAlert();
 
 	}
