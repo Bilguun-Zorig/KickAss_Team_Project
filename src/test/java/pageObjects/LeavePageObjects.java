@@ -18,6 +18,7 @@ public class LeavePageObjects {
 	
 	CommonMethods cm = new CommonMethods();
 	Assertions as = new Assertions();
+	boolean noAssignLeave = false;
 	
 	public LeavePageObjects() {
 		PageFactory.initElements(BaseClass.getDriver(), this);
@@ -120,25 +121,46 @@ public class LeavePageObjects {
 	
 //---------------------------------------------------------------------------------	
 	public void rejectAssignLeave(List<WebElement> recordTable) {
-		for(int i=0; i<recordTable.size(); i++) {
-			readTable(recordTable,i);
-		}
-	}	
-	public void readTable(List<WebElement> recordTable, int index) {		
 		cm.wait.until(ExpectedConditions.visibilityOfAllElements(recordTable));
-		for (WebElement ea : recordTable) {
-			cm.wait(ea);	
-			String[] lines = ea.getText().split("\n");
-			if(Double.parseDouble(lines[3])<0 ) {
-				cm.click(cancelButtonList.get(index));
-				cm.wait(popupBox);
-				cm.highLightElementMethod(popupBox);	
-				as.asserts(popupBox);	
+		for(int i=0; i<recordTable.size(); i++) {
+			readTable(recordTable);
+			if(noAssignLeave==true) {
 				break;
 			}
-			index++;	
-		}		
-	}		
+		}
+	}	
+	public void readTable(List<WebElement> recordTable) {		
+		int index = 0;
+		boolean clickedCancel = false;
+		cm.wait.until(ExpectedConditions.visibilityOfAllElements(recordTable));
+		for (WebElement ea : recordTable) {
+			cm.wait(ea);
+			cm.highLightElementMethod(ea);
+			String[] lines = ea.getText().split("\n");
+			int lineSize = lines.length;
+			if(lineSize==6) {
+				noAssignLeave = true;
+			}else if(lineSize==7) {
+				noAssignLeave = false;
+			}
+			System.out.println("size of column: "+ lineSize);
+			for(int i=0; i<lineSize;i++) {
+				if(lines[i].equalsIgnoreCase("Cancel")) {
+					cm.click(cancelButtonList.get(index));
+					clickedCancel = true;
+					cm.wait(popupBox);
+					cm.highLightElementMethod(popupBox);	
+					as.asserts(popupBox);						
+					break;
+				}
+			}
+			if(clickedCancel==true) {
+				break;
+			}else {
+				index++;
+			}			
+		}			
+	}
 	
 //**to select option from dropdown menu 
 	public void selectOptionDropdown(WebElement dropdownBox, List<WebElement> dropdownList,String option){
