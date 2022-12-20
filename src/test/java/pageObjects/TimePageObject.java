@@ -48,11 +48,17 @@ public class TimePageObject {
 	@FindBy(xpath= "//h6[@class='oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module']")
 	public WebElement timeText;
 	
+	@FindBy(xpath="//div[@class='orangehrm-container']")
+	public WebElement newCustomerTable;
+	
+	@FindBy(xpath="//span[@class='oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message']")
+	public WebElement errorMsg;
+	
 	public List<WebElement> getTopBarMenu() {
 		return timeTopBarMenu;
 	}
 	
-	//will send keys to name box. 
+	
 	public void sendCustomerName() { 
 		cm.highLightElementMethod(addNameTextBox);
 		addNameTextBox.sendKeys(customerName);
