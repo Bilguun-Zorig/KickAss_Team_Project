@@ -1,5 +1,7 @@
 package projectTest;
 
+import static org.testng.Assert.assertEquals;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -14,44 +16,35 @@ public class TimeTest_Mildred extends CommonMethods {
 	public void loginFunctionality() {
 		sendLoginValues(hpo.usernameTextbox, "username", hpo.passwordTextbox, "password");
 		click(hpo.loginButton);
-	}
-	@Test(enabled = true)
-	public void addNewCustomerwithNameandDescription() {
 		selection(cpo.leftSideMenuBar, "time");
 		selection(tpo.getTopBarMenu(), "pi");
 		wait(tpo.customersBox);
 		click(tpo.customersBox);
 		wait(tpo.addCustomer);
 		click(tpo.addCustomer);
+			
+	}
+	@Test(enabled = true, priority =1)
+	public void addNewCustomerwithNameandDescription() {
 		tpo.sendCustomerName(); // will call method to send random customer name.
 		wait(tpo.addDescriptionBox);
 		tpo.addDescriptionBox.sendKeys(tpo.timeDescription);
 		click(tpo.saveButton);
-		threadSleep(5);
+		wait(tpo.newCustomerTable);
+		asserts(tpo.newCustomerTable);
 	}
-	@Test(enabled = true)
+	@Test(enabled = true, priority=2)
 	public void addNewCustomerWithNameOnly() {
-		selection(cpo.leftSideMenuBar, "time");
-		selection(tpo.getTopBarMenu(), "pi");
-		wait(tpo.customersBox);
-		click(tpo.customersBox);
-		wait(tpo.addCustomer);
-		click(tpo.addCustomer);
 		tpo.sendCustomerName(); // will call method to send random customer name.
 		wait(tpo.saveButton);
 		click(tpo.saveButton);
-		System.out.println("end addNew2");
+		asserts(tpo.newCustomerTable);
 	}
-	@Test(enabled = true)
+	@Test(enabled = true, priority=3)
 	public void addNewCustomerNoNameDescription() {
-		selection(cpo.leftSideMenuBar, "time");
-		selection(tpo.getTopBarMenu(), "pi");
-		wait(tpo.customersBox);
-		click(tpo.customersBox);
-		wait(tpo.addCustomer);
-		click(tpo.addCustomer);
-		wait(tpo.saveButton);
+        wait(tpo.saveButton);
 		click(tpo.saveButton);
+		asserts(tpo.errorMsg,"errorMsg");
 	}
 	@AfterMethod
 	public void logoutFunctionality() {
