@@ -52,10 +52,6 @@ public class DirectoryPage {
 		}
 	}
 
-	public String trimText(WebElement element) {
-		return element.getText().substring(element.getText().indexOf(" ")).trim();
-	}
-
 	public String getAdminFirstName(WebElement element) {
 		return element.getText().substring(0, element.getText().indexOf(" "));
 	}

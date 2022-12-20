@@ -18,12 +18,11 @@ public class DirectoryTest extends CommonMethods{
 	public void loginToDiPage() {
 		sendLoginValues(hpo.usernameTextbox, "username", hpo.passwordTextbox, "password");
 		click(hpo.loginButton);
-		asserts(dp.pageHeader, "db");
 		selection(cpo.leftSideMenuBar, "dr");
 		asserts(dp.pageHeader, "dr");
 	}
 	@Test(enabled=true)
-	public void adminName() {
+	public void addEmployeesNames() {
 		click(dp.searchName);			
 		dp.searchName.sendKeys(dp.getAdminFirstName(dp.employeeName));		
 		dp.selectSearchDropdown(dp.employeeNameList,dp.getAdminFirstName(dp.employeeName));	
@@ -31,7 +30,6 @@ public class DirectoryTest extends CommonMethods{
 	}
 	@Test(enabled=true)
 	public void jobTitleTest() {
-		click(dp.jobTitle);
 		click(dp.jobTitle);
 		dp.selectJob(3);
 		click(dp.searchButton);
