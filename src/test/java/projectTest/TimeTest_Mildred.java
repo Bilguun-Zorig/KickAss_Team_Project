@@ -32,7 +32,6 @@ public class TimeTest_Mildred extends CommonMethods {
 		click(tpo.saveButton);
 		wait(tpo.newCustomerTable);
 		asserts(tpo.newCustomerTable);
-		
 	}
 	@Test(enabled = true, priority=2)
 	public void addNewCustomerWithNameOnly() {

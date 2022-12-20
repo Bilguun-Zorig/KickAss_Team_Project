@@ -58,7 +58,7 @@ public class TimePageObject {
 		return timeTopBarMenu;
 	}
 	
-	//will send keys to name box. 
+	
 	public void sendCustomerName() { 
 		cm.highLightElementMethod(addNameTextBox);
 		addNameTextBox.sendKeys(customerName);
