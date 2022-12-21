@@ -2,7 +2,7 @@ package projectTest;
 
 
 
-import org.testng.Assert;
+import static org.testng.Assert.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -34,7 +34,7 @@ public class MyInfo_Page_Alin extends CommonMethods{
 		mipo.addEmergencyContact();
 		mipo.saveButton.click();
 		threadSleep(3);
-		Assert.assertTrue(mipo.checkRecord(mipo.recordedName, mipo.fullName));
+		assertTrue(mipo.checkRecord(mipo.recordedName, mipo.fullName));
 		
 		
 		
@@ -46,7 +46,7 @@ public class MyInfo_Page_Alin extends CommonMethods{
 		mipo.editSelection();
 		mipo.saveButton.click();
 		threadSleep(3);
-		Assert.assertTrue(mipo.checkRecord(mipo.recordedMobile, mipo.newCellPhone));
+		assertTrue(mipo.checkRecord(mipo.recordedMobile, mipo.newCellPhone));
 		
 	}
 	
@@ -55,7 +55,7 @@ public class MyInfo_Page_Alin extends CommonMethods{
 		click(mipo.deleteIcon);
 		click(mipo.deletebutton);
 		threadSleep(3);
-		Assert.assertFalse(mipo.checkRecord(mipo.recordedName, mipo.fullName));
+		assertFalse(mipo.checkRecord(mipo.recordedName, mipo.fullName));
 	}
 	
 	@AfterMethod
