@@ -27,26 +27,29 @@ public class KPI_Performance_Page_Pichate extends CommonMethods{
 	public void test01AddKPI() {
 		click(kppo.addButton);
 		asserts(kppo.subHeader, "ak");
-		sendTextByConfigText(kppo.keyInputBox, "kiptx");
+		sendTextByConfigText(kppo.keyInputBox, "kpitx");
 		sendTextByConfigText(kppo.jobTitleBox, "a");
 		click(kppo.jobDropdown);
 		click(kppo.saveButton);
+		asserts(kppo.listOfKpi, "kpitx");
 		asserts(kppo.listOfKpi, kppo.lastKpi());
 	}
 	@Test(enabled=true)
 	public void test02EditKPI() {
-		kppo.clickEditButton(kppo.listOfKpi, "kiptx");
+		kppo.clickEditButton(kppo.listOfKpi, "kpitx");
 		asserts(kppo.subHeader, "ek");
-		sendTextByConfigText(kppo.keyInputBox, "ekiptx");
+		sendTextByConfigText(kppo.keyInputBox, "ekpitx");
 		click(kppo.saveButton);
+		asserts(kppo.listOfKpi, "ekpitx");
 		asserts(kppo.listOfKpi, kppo.lastKpi());
 	}
 	@Test(enabled=true)
 	public void test03DeleteKPI() {
-		kppo.selectKPI(kppo.listOfKpi, "ekiptx");
+		kppo.selectKPI(kppo.listOfKpi, "ekpitx");
 		scrollUp();
 		click(kppo.deleteButton);
 		click(kppo.yesDeleteButton);
+		kppo.assertsNotEqual(kppo.listOfKpi, "ekpitx");
 		asserts(kppo.listOfKpi, kppo.lastKpi());
 	}
 	@AfterMethod
