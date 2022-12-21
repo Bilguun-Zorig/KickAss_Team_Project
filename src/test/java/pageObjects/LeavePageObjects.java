@@ -1,8 +1,8 @@
 package pageObjects;
 
-
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -116,50 +116,45 @@ public class LeavePageObjects {
 	@FindBy(xpath = "//div[@class='oxd-table-body']/div")
 	public List<WebElement> tableList;
 	
-	@FindBy(xpath = "//div[@class='oxd-table-cell-actions']")
-	public List<WebElement> cancelButtonList;
-	
 //---------------------------------------------------------------------------------	
 	public void rejectAssignLeave(List<WebElement> recordTable) {
 		cm.wait.until(ExpectedConditions.visibilityOfAllElements(recordTable));
 		for(int i=0; i<recordTable.size(); i++) {
-			readTable(recordTable);
 			if(noAssignLeave==true) {
 				break;
 			}
+			readTable(recordTable);				
 		}
 	}	
-	public void readTable(List<WebElement> recordTable) {		
-		int index = 0;
+	public void readTable(List<WebElement> recordTable) {
 		boolean clickedCancel = false;
-		cm.wait.until(ExpectedConditions.visibilityOfAllElements(recordTable));
+		cm.wait.until(ExpectedConditions.visibilityOfAllElements(recordTable));	
 		for (WebElement ea : recordTable) {
 			cm.wait(ea);
 			cm.highLightElementMethod(ea);
+			
 			String[] lines = ea.getText().split("\n");
-			int lineSize = lines.length;
-			if(lineSize==6) {
+			if(lines.length==6) {
 				noAssignLeave = true;
-			}else if(lineSize==7) {
+			}else if(lines.length>6) {
 				noAssignLeave = false;
-			}
-			System.out.println("size of column: "+ lineSize);
-			for(int i=0; i<lineSize;i++) {
-				if(lines[i].equalsIgnoreCase("Cancel")) {
-					cm.click(cancelButtonList.get(index));
+			}			
+			
+			List<WebElement> col =  ea.findElements(By.tagName("div"));
+			for(WebElement e: col) {
+				if(e.getText().equals("Cancel")) {
+					cm.click(e);
 					clickedCancel = true;
 					cm.wait(popupBox);
 					cm.highLightElementMethod(popupBox);	
-					as.asserts(popupBox);						
+					as.asserts(popupBox);	
 					break;
 				}
 			}
 			if(clickedCancel==true) {
 				break;
-			}else {
-				index++;
-			}			
-		}			
+			}
+		}	
 	}
 	
 //**to select option from dropdown menu 
