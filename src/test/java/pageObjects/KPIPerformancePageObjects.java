@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import utilities.BaseClass;
 
@@ -75,6 +76,14 @@ public class KPIPerformancePageObjects {
 			last = kpi.getText();
 		}
 		return last;
+	}
+
+	public void assertsNotEqual (List <WebElement> elements, String value) {
+		for(WebElement element : elements) {
+			if(!element.getText().contains(value)) {
+				Assert.assertTrue(true);
+			}
+		}
 	}
 
 }
