@@ -72,10 +72,10 @@ public class MyInfoPageObjects {
 		
 				inputFields.get(3).click();
 				cm.threadSleep(2);
-				for (int i = 1; i <= 10 ;i++) {
+				for (int i = 1; i <= 10;i++) { 
 					inputFields.get(3).sendKeys(Keys.BACK_SPACE);
 				}
-				
+				cm.threadSleep(3);
 				
     
 			}
