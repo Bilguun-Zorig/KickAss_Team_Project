@@ -99,6 +99,7 @@ public class MyInfoPageObjects {
 			}
 		}
 		return isRecordSave;
+		
 	}
 			
 }
