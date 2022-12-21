@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import utilities.BaseClass;
 import utilities.CommonMethods;
@@ -19,6 +20,7 @@ public class MyInfoPageObjects {
 	public String relationship = CommonMethods.fake.relationships().any();
 	public String homePhone = CommonMethods.fake.bothify("##########");
 	public String cellPhone = CommonMethods.fake.bothify("##########");
+	public String newCellPhone = CommonMethods.fake.bothify("##########");
 	public String workPhone = CommonMethods.faker.bothify("##########");
 	CommonMethods cm = new CommonMethods();
 
@@ -58,6 +60,14 @@ public class MyInfoPageObjects {
 	@FindBy(xpath ="//*[@class ='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin']")
 	public WebElement deletebutton;
 	
+	@FindBy(xpath = "//*[@class ='oxd-table-card']/div/div[2]/div")
+	public List<WebElement> recordedName;
+	
+	@FindBy(xpath = "//*[@class ='oxd-table-card']/div/div[5]/div")
+	public List<WebElement> recordedMobile;
+	
+	
+	
     public void addEmergencyContact () {
     	
 		inputFields.get(0).sendKeys(fullName);
@@ -75,10 +85,21 @@ public class MyInfoPageObjects {
 				for (int i = 1; i <= 10;i++) { 
 					inputFields.get(3).sendKeys(Keys.BACK_SPACE);
 				}
+				inputFields.get(3).sendKeys(newCellPhone);
 				cm.threadSleep(3);
 				
     
 			}
+    public boolean checkRecord(List <WebElement> elements, String value) {
+    	boolean isRecordSave = false;
+		for(WebElement element : elements) {
+			System.out.println(element.getText());
+			if(element.getText().equals(value)) {
+				isRecordSave = true;
+			}
+		}
+		return isRecordSave;
+	}
 			
 }
     
