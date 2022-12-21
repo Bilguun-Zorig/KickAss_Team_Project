@@ -1,5 +1,6 @@
 package projectTest;
 
+import org.bouncycastle.crypto.macs.CMac;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -52,6 +53,7 @@ public class LeaveTest_byNadia extends CommonMethods {
 	public void rejectAssignLeave() {
 		selection(lpo.leaveMenuBar, "myLeave");
 		asserts(lpo.myLeaveText,"myLeaveText_exp");	
+		scrollDown();
 		lpo.rejectAssignLeave(lpo.tableList);			
 	}
 	
