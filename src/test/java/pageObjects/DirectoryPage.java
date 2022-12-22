@@ -22,17 +22,25 @@ public class DirectoryPage {
 	public WebElement pageHeader;
 
 	@FindBy(xpath = "//p[@class='oxd-userdropdown-name']")
-	public WebElement employeeName;
+	public WebElement employeeNameField;
+	
+	@FindBy(xpath="//*[contains(text(),\"Employee\")]")
+	public WebElement employeeNameHeader;
+	
+	@FindBy(xpath="//*[contains(text(),\"Job\")]")
+	public WebElement jobTitleHeader;
+	
+	@FindBy(xpath="//*[contains(text(),\"Location\")]")
+	public WebElement locationHeader;
 
 	@FindBy(xpath = "//input[@placeholder=\"Type for hints...\"]")
 	public WebElement searchName;
 
 	@FindBy(xpath = "//div[@class='oxd-form-actions']/button[2]")
 	public WebElement searchButton;
-
 	
 	@FindBy(xpath = "//*[@class='oxd-grid-3']/div[2]/div/div[2]/div/div/div[1]")
-	public WebElement jobTitle;
+	public WebElement jobTitleField;
 
 	@FindBy(xpath = "//*[@class='oxd-grid-3']/div[3]/div/div[2]/div/div/div[1]")
 	public WebElement locationFiled;
@@ -58,9 +66,9 @@ public class DirectoryPage {
 
 	public void selectJob(int index) {
 		for (int i = 1; i <= index; i++) {
-			jobTitle.sendKeys(Keys.ARROW_DOWN);
+			jobTitleField.sendKeys(Keys.ARROW_DOWN);
 		}
-		jobTitle.sendKeys(Keys.ENTER);
+		jobTitleField.sendKeys(Keys.ENTER);
 	}
 
 	public void selectLocation(int index) {
